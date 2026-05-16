@@ -1,0 +1,8 @@
+services:
+  mypj:
+    build: .
+    environment:
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
