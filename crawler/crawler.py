@@ -69,7 +69,8 @@ def fetch_a_hist(symbol="000300"):
     start = (datetime.today() - timedelta(days=365)).strftime("%Y%m%d")
     end = datetime.today().strftime("%Y%m%d")
     print(f"正在获取 {symbol} 历史日线...")
-    df = ak.stock_zh_index_daily_em(symbol=f"sh{symbol}", start_date=start, end_date=end)
+    df = retry(lambda: ak.stock_zh_index_daily_em(
+        symbol=f"sh{symbol}", start_date=start, end_date=end), "a_hist")
     print(f"  获取到 {len(df)} 条")
     save_csv(df, "a_hist")
 

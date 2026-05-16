@@ -1,5 +1,9 @@
 # 虚拟环境
 .venv/
+.venv-wsl/
+
+# Claude
+.claude/
 
 # IDE
 .idea/
